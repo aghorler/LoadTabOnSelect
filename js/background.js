@@ -9,7 +9,6 @@ function handleUpdated(tabId, changeInfo, tabInfo){
 	var i;
 	for(i = 0; i < managedTabs.length; i++){
 		if(managedTabs[i].id == tabId && changeInfo.url !== undefined && changeInfo.url !== "about:blank" && managedTabs[i].loadedUrl == null){
-
 			managedTabs[i].loadedUrl = changeInfo.url;
 
 			browser.tabs.update(managedTabs[i].id, {
@@ -25,8 +24,6 @@ function handleActivated(activeInfo){
 	var i;
 	for(i = 0; i < managedTabs.length; i++){
 		if(managedTabs[i].id == activeInfo.tabId){
-			console.log(JSON.stringify(managedTabs));
-
 			browser.tabs.update(managedTabs[i].id, {
 				url: managedTabs[i].loadedUrl
 			});
