@@ -3,7 +3,6 @@ var managedTabs = [];
 function handleCreated(tab){
 	var managedTab = {id: tab.id, initialUrl: tab.url, loadedUrl: null};
 	managedTabs.push(managedTab);
-	console.log("onCreated run.");
 }
 
 function handleUpdated(tabId, changeInfo, tabInfo){
@@ -18,19 +17,29 @@ function handleUpdated(tabId, changeInfo, tabInfo){
 			browser.tabs.update(managedTabs[i].id, {
 				url: "about:blank"
 			});
+
+			break;
 		}
 	}
 }
 
 function handleActivated(activeInfo){
-	console.log("onActivated run.");
 	var i;
 	for(i = 0; i < managedTabs.length; i++){
-		if(activeInfo.tabId == managedTabs[i].id){
+		if(managedTabs[i].id == activeInfo.tabId){
+			console.log(JSON.stringify(managedTabs));
+			
 			browser.tabs.update(managedTabs[i].id, {
 				url: managedTabs[i].loadedUrl
-			});
-			managedTabs.pop(managedTabs[i]);
+			})
+
+			console.log("Removing tab: " + managedTabs[i].id);
+
+			managedTabs.splice(i, 1);
+
+			console.log(JSON.stringify(managedTabs));
+
+			break;
 		}
 	}
 }
