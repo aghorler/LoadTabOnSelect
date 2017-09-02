@@ -3,6 +3,10 @@
 		"scripts": ["/js/background.js"]
 	},
 	"description": "Load new tabs on selection.",
+	"icons": {
+		"48": "/img/icon.png",
+		"96": "/img/icon@2x.png"
+	},
 	"permissions": [
 		"tabs"
 	],
