@@ -1,5 +1,5 @@
 ## LoadTabOnSelect
-**Version 1.1  | September 2 2017**
+**Version 1.2  | September 5 2017**
 
 LoadTabOnSelect prevents new tabs from automatically loading, instead loading them on selection.
 
